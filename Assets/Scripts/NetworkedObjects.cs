@@ -48,8 +48,8 @@ public class NetworkedObjects : MonoBehaviour
         // only the "server" has authority over which color the player should be and its seed
         if (PhotonNetwork.IsMasterClient)
         {
-            player.RPC("SetColor", RpcTarget.AllBuffered, players.Count - 1); // buffer the color change so it applies to new arrivals in the room
-            player.RPC("SetRandomSeed", RpcTarget.AllBuffered, seed);
+            //player.RPC("SetColor", RpcTarget.AllBuffered, players.Count - 1); // buffer the color change so it applies to new arrivals in the room
+            //player.RPC("SetRandomSeed", RpcTarget.AllBuffered, seed);
         }
     }
 }
