@@ -6,7 +6,7 @@ using Photon.Pun;
 public class PlayerMovement : MonoBehaviourPun, IPunObservable
 {
     public float speed;
-
+    public GameObject Player;
     public Transform appearance;
     public Transform target;
     Vector3 lastSyncedPos;
@@ -30,6 +30,15 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
 
             // move the renderer for this player immediately to its ideal position
             appearance.position = target.position;
+
+            if (Input.GetMouseButtonDown(1))
+            {
+                Player.GetComponentInChildren<SpriteRenderer>().enabled = true;
+            }
+            else if (Input.GetMouseButtonUp(1))
+            {
+                Player.GetComponentInChildren<SpriteRenderer>().enabled = false;
+            }
         }
         else
         {
@@ -38,7 +47,10 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
 
             //appearance.position = target.position; // for jerky but accurate movement
         }
+ 
+
     }
+
 
     // read and write to a serialized data stream to send this object's position information
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

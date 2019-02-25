@@ -9,6 +9,8 @@ public class NetworkedObjects : MonoBehaviour
 {
     // the boundaries of the world
     public BoxCollider world;
+     GameObject Player;
+
 
     // keep track of all the players in the game
     [HideInInspector] public List<PhotonView> players = new List<PhotonView>();
@@ -40,16 +42,18 @@ public class NetworkedObjects : MonoBehaviour
         PhotonNetwork.Instantiate("Player", spawnPos, Quaternion.identity, 0);
     }
 
-    public void AddPlayer(PhotonView player)
+    public void AddPlayer(PhotonView player, GameObject Player)
     {
         // add a player to the list of all tracked players
         players.Add(player);
-
+        foreach (PhotonView players in players)
+        {
+            Player.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        }
         // only the "server" has authority over which color the player should be and its seed
         if (PhotonNetwork.IsMasterClient)
         {
-            //player.RPC("SetColor", RpcTarget.AllBuffered, players.Count - 1); // buffer the color change so it applies to new arrivals in the room
-            //player.RPC("SetRandomSeed", RpcTarget.AllBuffered, seed);
+         
         }
     }
 }
