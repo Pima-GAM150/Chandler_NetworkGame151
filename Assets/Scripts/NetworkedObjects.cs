@@ -9,11 +9,13 @@ public class NetworkedObjects : MonoBehaviour
 {
     // the boundaries of the world
     public BoxCollider world;
-     GameObject Player;
+    public GameObject Player;
+    public GameObject bullet;
 
 
     // keep track of all the players in the game
     [HideInInspector] public List<PhotonView> players = new List<PhotonView>();
+    public List<PhotonView> bullets = new List<PhotonView>();
 
     public static NetworkedObjects find;
 
@@ -36,7 +38,7 @@ public class NetworkedObjects : MonoBehaviour
 
         // when the game starts on this client, instantiate a player from a named prefab in the resources folder
         float xRange = UnityEngine.Random.Range(-world.bounds.extents.x, world.bounds.extents.x);
-        float yRange = UnityEngine.Random.Range(-world.bounds.extents.x, world.bounds.extents.x);
+        float yRange = UnityEngine.Random.Range(-world.bounds.extents.y, world.bounds.extents.y);
 
         Vector3 spawnPos = world.bounds.center + new Vector3(xRange, yRange, 0f);
         PhotonNetwork.Instantiate("Player", spawnPos, Quaternion.identity, 0);
@@ -55,5 +57,9 @@ public class NetworkedObjects : MonoBehaviour
         {
          
         }
+    }
+
+    public void AddBullet(PhotonView bullet, GameObject bulletGameObj) {
+        bullets.Add(bullet);
     }
 }

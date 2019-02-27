@@ -302,7 +302,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   world: {fileID: 23184026}
+  Player: {fileID: 0}
+  bullet: {fileID: 0}
   players: []
+  bullets: []
 --- !u!4 &750634896
 Transform:
   m_ObjectHideFlags: 0
