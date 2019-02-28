@@ -18,6 +18,8 @@ public class NetworkedObjects : MonoBehaviour
     public List<PhotonView> bullets = new List<PhotonView>();
 
     public static NetworkedObjects find;
+    public PlayerMovement playerMovement;
+   
 
     int seed; // only matters on the master client
 
@@ -25,6 +27,7 @@ public class NetworkedObjects : MonoBehaviour
     void Awake()
     {
         find = this;
+ 
     }
 
     void Start()
@@ -43,6 +46,15 @@ public class NetworkedObjects : MonoBehaviour
         Vector3 spawnPos = world.bounds.center + new Vector3(xRange, yRange, 0f);
         PhotonNetwork.Instantiate("Player", spawnPos, Quaternion.identity, 0);
     }
+     void Update()
+    {
+        if (Input.GetMouseButtonDown(0) && Input.GetMouseButton(1))
+        {
+            Vector3 playerPos = playerMovement.appearance.position;
+            PhotonNetwork.Instantiate("Bullet", playerPos, Quaternion.identity, 0);
+        }
+    }
+
 
     public void AddPlayer(PhotonView player, GameObject Player)
     {

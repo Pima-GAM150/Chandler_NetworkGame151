@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
     public GameObject Player;
     public Transform appearance;
     public Transform target;
-    Vector3 lastSyncedPos;
+    public Vector3 lastSyncedPos;
 
     void Update()
     {

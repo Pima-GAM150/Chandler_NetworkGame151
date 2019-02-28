@@ -302,10 +302,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   world: {fileID: 23184026}
-  Player: {fileID: 0}
-  bullet: {fileID: 0}
+  Player: {fileID: 6590832752387331801, guid: 18fa9a5f0756a074c969a4d18c8bb860, type: 3}
+  bullet: {fileID: 5344375217001597946, guid: 9003a64eccab73f49b555664571d72a3, type: 3}
   players: []
   bullets: []
+  playerMovement: {fileID: 6590832752387331800, guid: 18fa9a5f0756a074c969a4d18c8bb860,
+    type: 3}
 --- !u!4 &750634896
 Transform:
   m_ObjectHideFlags: 0
