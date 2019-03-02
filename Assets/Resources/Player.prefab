@@ -173,6 +173,7 @@ MonoBehaviour:
   Player: {fileID: 6590832751234681143}
   appearance: {fileID: 6590832751234681142}
   target: {fileID: 6590832751319367036}
+  lastSyncedPos: {x: 0, y: 0, z: 0}
 --- !u!114 &6626124863712905158
 MonoBehaviour:
   m_ObjectHideFlags: 0

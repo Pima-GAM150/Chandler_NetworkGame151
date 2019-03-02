@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e73f0925c0b286a43a8e21c77577df57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 6590832752387331801, guid: 18fa9a5f0756a074c969a4d18c8bb860, type: 3}
+  Player: {fileID: 8459603959406504176}
   Bullet: {fileID: 8459603959406504176}
   bulletAppearance: {fileID: 3569914249937766736}
   bulletTarget: {fileID: 6909316596816562438}

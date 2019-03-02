@@ -22,10 +22,7 @@ public class BulletMovement : MonoBehaviourPun, IPunObservable
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && Input.GetMouseButton(1))
-        {
-            PhotonNetwork.Instantiate("Bullet", this.Player.transform.position, Quaternion.identity, 0);
-        }
+  
 
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

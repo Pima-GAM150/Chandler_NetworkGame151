@@ -48,10 +48,11 @@ public class NetworkedObjects : MonoBehaviour
     }
      void Update()
     {
+        Vector3 playerPos = players[0].GetComponent<PlayerMovement>().appearance.position;
         if (Input.GetMouseButtonDown(0) && Input.GetMouseButton(1))
         {
-            Vector3 playerPos = playerMovement.appearance.position;
-            PhotonNetwork.Instantiate("Bullet", playerPos, Quaternion.identity, 0);
+           
+            PhotonNetwork.Instantiate("Bullet", playerPos, Quaternion.identity);
         }
     }
 
