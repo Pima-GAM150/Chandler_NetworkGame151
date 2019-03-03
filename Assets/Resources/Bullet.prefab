@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 124095278205208148}
   - component: {fileID: 7262452193342979082}
   - component: {fileID: 7599412176101456192}
+  - component: {fileID: 4951065484088940959}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -58,7 +59,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5344375217001597946}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.9665956, y: -9.064576, z: 0.27479267}
+  m_LocalPosition: {x: 3397.021, y: 2136.564, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3569914249937766736}
@@ -82,6 +83,11 @@ MonoBehaviour:
   Bullet: {fileID: 8459603959406504176}
   bulletAppearance: {fileID: 3569914249937766736}
   bulletTarget: {fileID: 6909316596816562438}
+  direction: {x: 0, y: 0}
+  bulletSpeed: 1
+  networkedObjects: {fileID: 2877494519071231400, guid: 18a592d15d1e0e44ba3275727da0b91d,
+    type: 3}
+  bulletView: {fileID: 7262452193342979082}
 --- !u!114 &124095278205208148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,6 +137,27 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
+--- !u!50 &4951065484088940959
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5344375217001597946}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8459603959406504176
 GameObject:
   m_ObjectHideFlags: 0

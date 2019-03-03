@@ -13,6 +13,7 @@ public class NetworkedObjects : MonoBehaviour
     public GameObject bullet;
 
 
+
     // keep track of all the players in the game
     [HideInInspector] public List<PhotonView> players = new List<PhotonView>();
     public List<PhotonView> bullets = new List<PhotonView>();
@@ -44,16 +45,28 @@ public class NetworkedObjects : MonoBehaviour
         float yRange = UnityEngine.Random.Range(-world.bounds.extents.y, world.bounds.extents.y);
 
         Vector3 spawnPos = world.bounds.center + new Vector3(xRange, yRange, 0f);
-        PhotonNetwork.Instantiate("Player", spawnPos, Quaternion.identity, 0);
+        bullet = PhotonNetwork.Instantiate("Player", spawnPos, Quaternion.identity, 0);
     }
-     void Update()
+    void Update()
     {
+        netFire();
+    }
+
+    public void netFire() {
         Vector3 playerPos = players[0].GetComponent<PlayerMovement>().appearance.position;
         if (Input.GetMouseButtonDown(0) && Input.GetMouseButton(1))
         {
-           
-            PhotonNetwork.Instantiate("Bullet", playerPos, Quaternion.identity);
+            bullet = PhotonNetwork.Instantiate("Bullet", playerPos, Quaternion.identity, 0);
         }
+        /* if (players.Count > 1) {
+         Vector3 playerPos2 = players[1].GetComponent<PlayerMovement>().appearance.position;
+             if (Input.GetMouseButtonDown(0) && Input.GetMouseButton(1))
+         {
+
+                 bullet =  PhotonNetwork.Instantiate("Bullet", playerPos2, Quaternion.identity, 0);
+
+             }
+     }*/
     }
 
 
@@ -72,7 +85,12 @@ public class NetworkedObjects : MonoBehaviour
         }
     }
 
-    public void AddBullet(PhotonView bullet, GameObject bulletGameObj) {
+    public void AddBullet(PhotonView bullet, GameObject bulletGameObj)
+    {
         bullets.Add(bullet);
+
+        
     }
+
+
 }
