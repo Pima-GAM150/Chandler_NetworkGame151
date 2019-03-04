@@ -26,16 +26,29 @@ public class BulletMovement : MonoBehaviourPun, IPunObservable
     // Update is called once per frame
     void Update()
     {
+        StartCoroutine(waitForInstanciate());
         fire();
+        StopCoroutine(waitForInstanciate());
         
     }
     public void fire() {
-        if (Input.GetMouseButtonDown(0) && Input.GetMouseButton(1))
-        {
-            
-            Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
-            GetComponent<Rigidbody2D>().AddForce(direction * 200);
-        }
+        //Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
+        //transform.Translate(direction * 2);    
+        //GetComponent<Rigidbody2D>().AddForce(direction * 200);
+
+        Vector2 mousePos = Input.mousePosition;
+        Vector2 screenPos = Camera.main.ScreenToWorldPoint(new Vector2(mousePos.x, mousePos.y));
+        Vector2 pos = transform.position;
+        Quaternion q = Quaternion.FromToRotation(Vector2.up, screenPos - pos);
+        GetComponent<Rigidbody2D>().AddForce(GetComponent<Rigidbody2D>().transform.up * 5);
+
+    }
+
+    IEnumerator waitForInstanciate()
+    {
+       
+        yield return new WaitUntil(() => networkedObjects.netFire());
+        
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {

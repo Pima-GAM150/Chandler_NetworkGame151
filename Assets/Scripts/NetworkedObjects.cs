@@ -11,6 +11,7 @@ public class NetworkedObjects : MonoBehaviour
     public BoxCollider world;
     public GameObject Player;
     public GameObject bullet;
+    public Transform shootPoint;
 
 
 
@@ -52,12 +53,29 @@ public class NetworkedObjects : MonoBehaviour
         netFire();
     }
 
-    public void netFire() {
-        Vector3 playerPos = players[0].GetComponent<PlayerMovement>().appearance.position;
+    public bool netFire() {
+        bool bulletCreated = false;
+        Vector2 playerPos = players[0].GetComponent<PlayerMovement>().appearance.position;
+        Vector2 mousePos = Input.mousePosition;
+        Vector2 screenPos = Camera.main.ScreenToWorldPoint(new Vector2(mousePos.x, mousePos.y));
+        Vector2 pos = transform.position;
+        Quaternion q = Quaternion.FromToRotation(Vector2.up, screenPos - pos);
         if (Input.GetMouseButtonDown(0) && Input.GetMouseButton(1))
         {
-            bullet = PhotonNetwork.Instantiate("Bullet", playerPos, Quaternion.identity, 0);
+            if (transform.localScale.x < 0)
+            {
+                bullet = PhotonNetwork.Instantiate("Bullet",
+                new Vector2(playerPos.x - shootPoint.localPosition.x,
+                playerPos.y - shootPoint.localPosition.y), q);
+            }
+            else {
+                bullet = PhotonNetwork.Instantiate("Bullet",
+               new Vector2(playerPos.x + shootPoint.localPosition.x,
+               playerPos.y + shootPoint.localPosition.y), q);
+            }
+            bulletCreated = true;
         }
+        return bulletCreated;
         /* if (players.Count > 1) {
          Vector3 playerPos2 = players[1].GetComponent<PlayerMovement>().appearance.position;
              if (Input.GetMouseButtonDown(0) && Input.GetMouseButton(1))
