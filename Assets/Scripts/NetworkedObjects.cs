@@ -53,6 +53,7 @@ public class NetworkedObjects : MonoBehaviour
     }
 
     public bool netFire() {
+
         bool bulletCreated = false;
         Vector2 playerPos = players[0].GetComponent<PlayerMovement>().appearance.position;
         Vector2 mousePos = Input.mousePosition;

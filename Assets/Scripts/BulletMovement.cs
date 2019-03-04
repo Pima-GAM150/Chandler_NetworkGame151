@@ -9,6 +9,7 @@ public class BulletMovement : MonoBehaviourPun, IPunObservable
     public Transform bulletTarget;
     Vector3 lastSyncedPos;
     int bulletSpeed = 100;
+    bool isInstanciated;
 
 
     // Start is called before the first frame update
@@ -20,11 +21,15 @@ public class BulletMovement : MonoBehaviourPun, IPunObservable
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(waitForInstanciate());
+        if (!isInstanciated)
+        {
+            StartCoroutine(waitForInstanciate());
+            isInstanciated = true;
+        }
+
         fire();
         Destroy(this.gameObject, 1);
         StopAllCoroutines();
-      
 
 
     }
