@@ -65,13 +65,11 @@ public class NetworkedObjects : MonoBehaviour
             if (transform.localScale.x < 0 && bulletCreated == false)
             {
                 bullet = PhotonNetwork.Instantiate("Bullet",
-                new Vector2(playerPos.x - shootPoint.localPosition.x,
-                playerPos.y - shootPoint.localPosition.y), q);
+                new Vector2(playerPos.x, playerPos.y), q);
             }
             else {
                 bullet = PhotonNetwork.Instantiate("Bullet",
-               new Vector2(playerPos.x + shootPoint.localPosition.x,
-               playerPos.y + shootPoint.localPosition.y), q);
+               new Vector2(playerPos.x, playerPos.y), q);
             }
             bulletCreated = true;
         }
