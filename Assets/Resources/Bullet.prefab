@@ -79,15 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e73f0925c0b286a43a8e21c77577df57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 8459603959406504176}
-  Bullet: {fileID: 8459603959406504176}
-  bulletAppearance: {fileID: 3569914249937766736}
+  bullet: {fileID: 0}
   bulletTarget: {fileID: 6909316596816562438}
-  direction: {x: 0, y: 0}
-  bulletSpeed: 1
-  networkedObjects: {fileID: 2877494519071231400, guid: 18a592d15d1e0e44ba3275727da0b91d,
-    type: 3}
-  bulletView: {fileID: 7262452193342979082}
 --- !u!114 &124095278205208148
 MonoBehaviour:
   m_ObjectHideFlags: 0

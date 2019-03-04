@@ -5,22 +5,16 @@ using Photon.Pun;
 
 public class BulletMovement : MonoBehaviourPun, IPunObservable
 {
-    public GameObject Player;
-    public GameObject Bullet;
-    public Transform bulletAppearance;
+    public GameObject bullet;
     public Transform bulletTarget;
-    public Vector2 direction;
     Vector3 lastSyncedPos;
-    public int bulletSpeed = 5;
-    public NetworkedObjects networkedObjects;
-    public static BulletMovement find;
-    public PhotonView bulletView;
+    int bulletSpeed = 100;
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -28,28 +22,26 @@ public class BulletMovement : MonoBehaviourPun, IPunObservable
     {
         StartCoroutine(waitForInstanciate());
         fire();
-        StopCoroutine(waitForInstanciate());
-        
+        Destroy(this.gameObject, 1);
+        StopAllCoroutines();
+      
+
+
     }
-    public void fire() {
-        //Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position).normalized;
-        //transform.Translate(direction * 2);    
-        //GetComponent<Rigidbody2D>().AddForce(direction * 200);
-
-        Vector2 mousePos = Input.mousePosition;
-        Vector2 screenPos = Camera.main.ScreenToWorldPoint(new Vector2(mousePos.x, mousePos.y));
-        Vector2 pos = transform.position;
-        Quaternion q = Quaternion.FromToRotation(Vector2.up, screenPos - pos);
-        GetComponent<Rigidbody2D>().AddForce(GetComponent<Rigidbody2D>().transform.up * 5);
-
+    public void fire()
+    { 
+        GetComponent<Rigidbody2D>().AddForce(GetComponent<Rigidbody2D>().transform.up * bulletSpeed);
     }
 
     IEnumerator waitForInstanciate()
     {
        
-        yield return new WaitUntil(() => networkedObjects.netFire());
-        
+        yield return new WaitUntil(() => NetworkedObjects.find.netFire());
+       
+
     }
+
+
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
