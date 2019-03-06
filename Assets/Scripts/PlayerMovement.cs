@@ -33,11 +33,13 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
 
             if (Input.GetMouseButtonDown(1))
             {
-                Player.GetComponentInChildren<SpriteRenderer>().enabled = true;
+                photonView.RPC("MakeVisible", RpcTarget.All, true);
+                //Player.GetComponentInChildren<SpriteRenderer>().enabled = true;
             }
             else if (Input.GetMouseButtonUp(1))
             {
-                Player.GetComponentInChildren<SpriteRenderer>().enabled = false;
+                photonView.RPC("MakeVisible", RpcTarget.All, false);
+                //Player.GetComponentInChildren<SpriteRenderer>().enabled = false;
             }
         }
         else
@@ -51,21 +53,18 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
 
     }
 
+    [PunRPC]
+    public void MakeVisible( bool isVisible )
+    {
+        Player.GetComponentInChildren<SpriteRenderer>().enabled = isVisible;
+    }
 
     // read and write to a serialized data stream to send this object's position information
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
         {
-
-            // don't send redundant data, like an unchanged position, over the network
-            if (lastSyncedPos != target.position)
-            {
-                lastSyncedPos = target.position;
-
-                // since there is new position data, serialize it to the data stream
-                stream.SendNext(target.position);
-            }
+            stream.SendNext(target.position);
         }
         else
         {
