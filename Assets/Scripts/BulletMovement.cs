@@ -21,16 +21,20 @@ public class BulletMovement : MonoBehaviourPun, IPunObservable
     // Update is called once per frame
     void Update()
     {
-        if (!isInstanciated)
+        if (!photonView.IsMine) return;
+
+        if (photonView.IsMine)
         {
-            StartCoroutine(waitForInstanciate());
-            isInstanciated = true;
+            if (!isInstanciated)
+            {
+                StartCoroutine(waitForInstanciate());
+                isInstanciated = true;
+            }
+
+            fire();
+            Destroy(this.gameObject, 1);
+            StopAllCoroutines();
         }
-
-        fire();
-        Destroy(this.gameObject, 1);
-        StopAllCoroutines();
-
 
     }
     public void fire()
@@ -42,7 +46,7 @@ public class BulletMovement : MonoBehaviourPun, IPunObservable
     {
        
         yield return new WaitUntil(() => NetworkedObjects.find.netFire());
-        yield return new WaitUntil(() => NetworkedObjects.find.netFire2());
+        //yield return new WaitUntil(() => NetworkedObjects.find.netFire2());
 
     }
 

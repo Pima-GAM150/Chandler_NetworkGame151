@@ -46,22 +46,22 @@ public class NetworkedObjects : MonoBehaviour
 
         Vector3 spawnPos = world.bounds.center + new Vector3(xRange, yRange, 0f);
        PhotonNetwork.Instantiate("Player", spawnPos, Quaternion.identity, 0);
-        PhotonNetwork.Instantiate("Player", spawnPos + new Vector3(xRange, yRange, 0f), Quaternion.identity, 0);
+
     }
     void Update()
     {
         netFire();
-        netFire2();
+        //netFire2();
     }
 
     public bool netFire() {
-
-        bool bulletCreated = false;
+       
+            bool bulletCreated = false;
         Vector2 playerPos = players[0].GetComponent<PlayerMovement>().appearance.position;
         Vector2 mousePos = Input.mousePosition;
         Vector2 screenPos = Camera.main.ScreenToWorldPoint(new Vector2(mousePos.x, mousePos.y));
         Quaternion q = Quaternion.FromToRotation(Vector2.up, screenPos - playerPos);
-        if (Input.GetMouseButtonDown(0) && Input.GetMouseButton(1))
+        if (Input.GetMouseButtonDown(0) && Input.GetMouseButton(1) )
         {
             if (transform.localScale.x < 0 && bulletCreated == false)
             {
@@ -77,7 +77,7 @@ public class NetworkedObjects : MonoBehaviour
         return bulletCreated;
     }
 
-    public bool netFire2()
+   /* public bool netFire2()
     {
         bool bulletCreated2 = false;
         Vector2 playerPos2 = players[1].GetComponent<PlayerMovement>().appearance.position;
@@ -103,21 +103,21 @@ public class NetworkedObjects : MonoBehaviour
             
         }
         return bulletCreated2;
-    }
+    }*/
 
 
     public void AddPlayer(PhotonView player, GameObject Player)
     {
         // add a player to the list of all tracked players
         players.Add(player);
-
+        foreach (PhotonView players in players)
+        {
+            Player.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        }
         // only the "server" has authority over which color the player should be and its seed
         if (PhotonNetwork.IsMasterClient)
         {
-            foreach (PhotonView players in players)
-            {
-                Player.GetComponentInChildren<SpriteRenderer>().enabled = false;
-            }
+           
         }
     }
 
