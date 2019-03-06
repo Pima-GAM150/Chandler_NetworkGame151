@@ -42,7 +42,7 @@ public class BulletMovement : MonoBehaviourPun, IPunObservable
     {
        
         yield return new WaitUntil(() => NetworkedObjects.find.netFire());
-       
+        yield return new WaitUntil(() => NetworkedObjects.find.netFire2());
 
     }
 

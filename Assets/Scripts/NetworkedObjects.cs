@@ -46,10 +46,12 @@ public class NetworkedObjects : MonoBehaviour
 
         Vector3 spawnPos = world.bounds.center + new Vector3(xRange, yRange, 0f);
        PhotonNetwork.Instantiate("Player", spawnPos, Quaternion.identity, 0);
+        PhotonNetwork.Instantiate("Player", spawnPos + new Vector3(xRange, yRange, 0f), Quaternion.identity, 0);
     }
     void Update()
     {
         netFire();
+        netFire2();
     }
 
     public bool netFire() {
@@ -58,7 +60,6 @@ public class NetworkedObjects : MonoBehaviour
         Vector2 playerPos = players[0].GetComponent<PlayerMovement>().appearance.position;
         Vector2 mousePos = Input.mousePosition;
         Vector2 screenPos = Camera.main.ScreenToWorldPoint(new Vector2(mousePos.x, mousePos.y));
-        Vector2 pos = transform.position;
         Quaternion q = Quaternion.FromToRotation(Vector2.up, screenPos - playerPos);
         if (Input.GetMouseButtonDown(0) && Input.GetMouseButton(1))
         {
@@ -74,15 +75,34 @@ public class NetworkedObjects : MonoBehaviour
             bulletCreated = true;
         }
         return bulletCreated;
-        /* if (players.Count > 1) {
-         Vector3 playerPos2 = players[1].GetComponent<PlayerMovement>().appearance.position;
-             if (Input.GetMouseButtonDown(0) && Input.GetMouseButton(1))
-         {
+    }
 
-                 bullet =  PhotonNetwork.Instantiate("Bullet", playerPos2, Quaternion.identity, 0);
-
-             }
-     }*/
+    public bool netFire2()
+    {
+        bool bulletCreated2 = false;
+        Vector2 playerPos2 = players[1].GetComponent<PlayerMovement>().appearance.position;
+        Vector2 mousePos2 = Input.mousePosition;
+        Vector2 screenPos2 = Camera.main.ScreenToWorldPoint(new Vector2(mousePos2.x, mousePos2.y));
+        Quaternion q2 = Quaternion.FromToRotation(Vector2.up, screenPos2 - playerPos2);
+        if (players.Count > 1) {
+          
+            if (Input.GetMouseButtonDown(0) && Input.GetMouseButton(1))
+            {
+                if (transform.localScale.x < 0 && bulletCreated2 == false)
+                {
+                    bullet = PhotonNetwork.Instantiate("Bullet",
+                    new Vector2(playerPos2.x, playerPos2.y), q2);
+                }
+                else
+                {
+                    bullet = PhotonNetwork.Instantiate("Bullet",
+                   new Vector2(playerPos2.x, playerPos2.y), q2);
+                }
+                bulletCreated2 = true;
+            }
+            
+        }
+        return bulletCreated2;
     }
 
 
@@ -90,14 +110,14 @@ public class NetworkedObjects : MonoBehaviour
     {
         // add a player to the list of all tracked players
         players.Add(player);
-        foreach (PhotonView players in players)
-        {
-            Player.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        }
+
         // only the "server" has authority over which color the player should be and its seed
         if (PhotonNetwork.IsMasterClient)
         {
-         
+            foreach (PhotonView players in players)
+            {
+                Player.GetComponentInChildren<SpriteRenderer>().enabled = false;
+            }
         }
     }
 
