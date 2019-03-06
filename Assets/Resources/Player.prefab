@@ -119,7 +119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 33}
   - component: {fileID: 48}
-  - component: {fileID: 47}
+  - component: {fileID: 46}
   - component: {fileID: 49}
   - component: {fileID: 37}
   m_Layer: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eebce04171e7e7a4caae6b6c7b8d5d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &47
+--- !u!114 &46
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -192,7 +192,7 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 47}
+  - {fileID: 46}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
