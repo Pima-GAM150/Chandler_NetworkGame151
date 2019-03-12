@@ -4,12 +4,12 @@ using UnityEngine;
 using Photon.Pun;
 public class PlayerCollision : MonoBehaviourPun, IPunObservable
 {
- 
+  
 
-    void OnCollisionEnter2D(Collision2D col) {
 
+
+    void OnTriggerEnter2D(Collider2D col) {
         Debug.Log("player hit");
-
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

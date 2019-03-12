@@ -77,33 +77,6 @@ public class NetworkedObjects : MonoBehaviour
         return bulletCreated;
     }
 
-   /* public bool netFire2()
-    {
-        bool bulletCreated2 = false;
-        Vector2 playerPos2 = players[1].GetComponent<PlayerMovement>().appearance.position;
-        Vector2 mousePos2 = Input.mousePosition;
-        Vector2 screenPos2 = Camera.main.ScreenToWorldPoint(new Vector2(mousePos2.x, mousePos2.y));
-        Quaternion q2 = Quaternion.FromToRotation(Vector2.up, screenPos2 - playerPos2);
-        if (players.Count > 1) {
-          
-            if (Input.GetMouseButtonDown(0) && Input.GetMouseButton(1))
-            {
-                if (transform.localScale.x < 0 && bulletCreated2 == false)
-                {
-                    bullet = PhotonNetwork.Instantiate("Bullet",
-                    new Vector2(playerPos2.x, playerPos2.y), q2);
-                }
-                else
-                {
-                    bullet = PhotonNetwork.Instantiate("Bullet",
-                   new Vector2(playerPos2.x, playerPos2.y), q2);
-                }
-                bulletCreated2 = true;
-            }
-            
-        }
-        return bulletCreated2;
-    }*/
 
 
     public void AddPlayer(PhotonView player, GameObject Player)
