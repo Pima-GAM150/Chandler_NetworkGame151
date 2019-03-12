@@ -7,6 +7,8 @@ public class BulletCollision : MonoBehaviourPun, IPunObservable
    
     void OnTriggerEnter2D(Collider2D col)
     {
+
+
         Debug.Log("bullet hit");
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
