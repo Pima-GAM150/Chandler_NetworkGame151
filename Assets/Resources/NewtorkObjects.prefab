@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1063087980117284461}
   - component: {fileID: 1063087980117284460}
+  - component: {fileID: 1063087979494893118}
   m_Layer: 0
   m_Name: NewtorkObjects
   m_TagString: Untagged
@@ -49,3 +50,19 @@ MonoBehaviour:
   shootPoint: {fileID: 33, guid: 18fa9a5f0756a074c969a4d18c8bb860, type: 3}
   players: []
   bullets: []
+--- !u!114 &1063087979494893118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063087980117284467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 990223f9f4db6204ea333c8179e336dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthText: {fileID: 0}
+  playerHealth: 10
+  isDead: 0
+  playerCollision: {fileID: 0}

@@ -7,8 +7,13 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
 
 
     public bool isTriggered = false;
+    public static PlayerCollision find;
 
+    void Awake()
+    {
+        find = this;
 
+    }
 
     void OnTriggerEnter2D(Collider2D col)
     {
