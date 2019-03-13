@@ -6,7 +6,8 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
 {
 
 
-    int amount;
+    int amount = 1;
+    int maxHealth = 10;
     public int playerHealth;
     
     public static PlayerCollision find;
@@ -14,7 +15,7 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
     void Awake()
     {
         find = this;
-
+        playerHealth = maxHealth;
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -23,11 +24,11 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
         takeDamage(amount);
         Debug.Log("player hit");
     }
-    void OnTriggerExit2D(Collider2D col) {
-    
-    }
+
     public void takeDamage(int amount) {
-        playerHealth -= amount;
+
+        this.playerHealth -= amount;
+        Debug.Log("Took damage of " + amount + " so health was modified to " + playerHealth);
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
