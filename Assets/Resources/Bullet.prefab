@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 34}
   - component: {fileID: 37}
+  - component: {fileID: 54}
   m_Layer: 0
   m_Name: BulletMovementTarget
   m_TagString: Untagged
@@ -47,6 +48,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.28515625
+--- !u!114 &54
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a7c6f015d9540046802193e44738a74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  photonView: {fileID: 50}
 --- !u!1 &23
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,7 +75,7 @@ GameObject:
   - component: {fileID: 50}
   - component: {fileID: 51}
   - component: {fileID: 36}
-  - component: {fileID: 53}
+  - component: {fileID: 52}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -169,7 +183,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &53
+--- !u!114 &52
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,6 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8901be1c3ca6d340975daeb767e4497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 0}
 --- !u!1 &27
 GameObject:
   m_ObjectHideFlags: 0

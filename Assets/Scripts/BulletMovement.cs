@@ -32,8 +32,9 @@ public class BulletMovement : MonoBehaviourPun, IPunObservable
             }
 
             fire();
-            Destroy(this.gameObject, 1);
-            StopAllCoroutines();
+            StartCoroutine(destroyBullet());
+            
+           // StopAllCoroutines();
         }
 
     }
@@ -47,6 +48,10 @@ public class BulletMovement : MonoBehaviourPun, IPunObservable
        
         yield return new WaitUntil(() => NetworkedObjects.find.netFire());
 
+    }
+    IEnumerator destroyBullet() {
+        yield return new WaitForSeconds(1);
+        PhotonNetwork.Destroy(this.gameObject);
     }
 
 

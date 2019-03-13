@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 32}
   - component: {fileID: 38}
-  - component: {fileID: 56}
+  - component: {fileID: 53}
   m_Layer: 0
   m_Name: Movement Target
   m_TagString: Untagged
@@ -127,7 +127,7 @@ CircleCollider2D:
   m_Offset: {x: -0.0019222498, y: 0}
   serializedVersion: 2
   m_Radius: 0.09826324
---- !u!114 &56
+--- !u!114 &53
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
