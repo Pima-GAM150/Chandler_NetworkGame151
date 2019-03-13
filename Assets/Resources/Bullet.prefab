@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 34}
-  - component: {fileID: 1030306864649091546}
+  - component: {fileID: 37}
   m_Layer: 0
   m_Name: BulletMovementTarget
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 30}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1030306864649091546
+--- !u!58 &37
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 50}
   - component: {fileID: 51}
   - component: {fileID: 36}
-  - component: {fileID: 701872210650290041}
+  - component: {fileID: 53}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -169,7 +169,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &701872210650290041
+--- !u!114 &53
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

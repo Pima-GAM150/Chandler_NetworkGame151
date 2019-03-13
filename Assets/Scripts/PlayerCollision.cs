@@ -6,7 +6,9 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
 {
 
 
-    public bool isTriggered = false;
+    int amount;
+    public int playerHealth;
+    
     public static PlayerCollision find;
 
     void Awake()
@@ -18,11 +20,14 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
     void OnTriggerEnter2D(Collider2D col)
     {
 
-        isTriggered = true;
+        takeDamage(amount);
         Debug.Log("player hit");
     }
     void OnTriggerExit2D(Collider2D col) {
-        isTriggered = false;
+    
+    }
+    public void takeDamage(int amount) {
+        playerHealth -= amount;
     }
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
