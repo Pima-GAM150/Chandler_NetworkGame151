@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 32}
   - component: {fileID: 38}
-  - component: {fileID: 53}
+  - component: {fileID: 55}
   m_Layer: 0
   m_Name: Movement Target
   m_TagString: Untagged
@@ -127,7 +127,7 @@ CircleCollider2D:
   m_Offset: {x: -0.0019222498, y: 0}
   serializedVersion: 2
   m_Radius: 0.09826324
---- !u!114 &53
+--- !u!114 &55
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,10 +136,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 25}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 111b52bc4ff3f414ea07a356f4c29aee, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a7c6f015d9540046802193e44738a74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 0
+  photonView: {fileID: 0}
 --- !u!1 &26
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,6 +152,7 @@ GameObject:
   - component: {fileID: 48}
   - component: {fileID: 46}
   - component: {fileID: 49}
+  - component: {fileID: 54}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -226,3 +227,17 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 1
   isRuntimeInstantiated: 0
+--- !u!114 &54
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 111b52bc4ff3f414ea07a356f4c29aee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: 0
+  proxy: {fileID: 55}

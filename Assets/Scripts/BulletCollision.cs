@@ -4,18 +4,23 @@ using UnityEngine;
 using Photon.Pun;
 public class BulletCollision : MonoBehaviourPun, IPunObservable
 {
-    public GameObject bullet;
+    
+   public PhotonViewProxy proxy;
     void OnTriggerEnter2D(Collider2D col)
     {
-        PhotonViewProxy proxy = col.GetComponent<PhotonViewProxy>();
+        col = GetComponentInChildren<Collider2D>();
+       proxy  = col.GetComponent<PhotonViewProxy>();
+
         if (proxy && proxy.photonView.Owner != this.photonView.Owner)
         {
             PhotonNetwork.Destroy(this.gameObject);
+            Debug.Log("hit other player");
+
         }
 
         
 
-        // Debug.Log("bullet hit");
+    
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
