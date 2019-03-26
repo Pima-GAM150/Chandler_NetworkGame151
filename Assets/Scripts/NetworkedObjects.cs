@@ -12,11 +12,15 @@ public class NetworkedObjects : MonoBehaviour
     public GameObject Player;
     public GameObject bullet;
     public Transform shootPoint;
+    public PlayerRotation playerRotation;
+    Vector2 playerPos;
+    Vector2 mousePos;
+    Vector2 screenPos;
+    Quaternion q;
 
 
-
-    // keep track of all the players in the game
-    [HideInInspector] public List<PhotonView> players = new List<PhotonView>();
+// keep track of all the players in the game
+[HideInInspector] public List<PhotonView> players = new List<PhotonView>();
     [HideInInspector] public List<PhotonView> bullets = new List<PhotonView>();
 
     public static NetworkedObjects find;
@@ -50,6 +54,10 @@ public class NetworkedObjects : MonoBehaviour
     }
     void Update()
     {
+        playerPos = players[0].GetComponent<PlayerMovement>().appearance.position;
+         mousePos = Input.mousePosition;
+         screenPos = Camera.main.ScreenToWorldPoint(new Vector2(mousePos.x, mousePos.y));
+         q = Quaternion.FromToRotation(Vector2.up, screenPos - playerPos);
         netFire();
         //netFire2();
     }
@@ -57,20 +65,17 @@ public class NetworkedObjects : MonoBehaviour
     public bool netFire() {
        
             bool bulletCreated = false;
-        Vector2 playerPos = players[0].GetComponent<PlayerMovement>().appearance.position;
-        Vector2 mousePos = Input.mousePosition;
-        Vector2 screenPos = Camera.main.ScreenToWorldPoint(new Vector2(mousePos.x, mousePos.y));
-        Quaternion q = Quaternion.FromToRotation(Vector2.up, screenPos - playerPos);
+ 
         if (Input.GetMouseButtonDown(0) && Input.GetMouseButton(1) )
         {
             if (transform.localScale.x < 0 && bulletCreated == false)
             {
                 bullet = PhotonNetwork.Instantiate("Bullet",
-                new Vector2(playerPos.x, playerPos.y), q);
+                new Vector2(playerPos.x , playerPos.y), q);
             }
             else {
                 bullet = PhotonNetwork.Instantiate("Bullet",
-               new Vector2(playerPos.x, playerPos.y), q);
+               new Vector2(playerPos.x , playerPos.y ), q);
             }
             bulletCreated = true;
         }
