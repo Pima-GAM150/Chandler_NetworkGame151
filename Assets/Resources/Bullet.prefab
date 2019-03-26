@@ -195,6 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8901be1c3ca6d340975daeb767e4497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCollision: {fileID: 54, guid: 18fa9a5f0756a074c969a4d18c8bb860, type: 3}
   proxy: {fileID: 53}
 --- !u!1 &27
 GameObject:

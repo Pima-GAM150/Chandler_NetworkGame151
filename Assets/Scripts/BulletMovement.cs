@@ -27,7 +27,7 @@ public class BulletMovement : MonoBehaviourPun, IPunObservable
         {
             if (!isInstanciated)
             {
-                StartCoroutine(waitForInstanciate());
+                StartCoroutine(waitForInstanciate()); 
                 StopAllCoroutines();
                 StartCoroutine(destroyBullet());
                 isInstanciated = true;
