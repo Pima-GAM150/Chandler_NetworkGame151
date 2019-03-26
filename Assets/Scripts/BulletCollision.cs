@@ -8,7 +8,8 @@ public class BulletCollision : MonoBehaviourPun, IPunObservable
    public PhotonViewProxy proxy;
     void OnTriggerEnter2D(Collider2D col)
     {
-        col = GetComponentInChildren<Collider2D>();
+        print( "Bullet hit " + col.gameObject.name );
+        // col = GetComponentInChildren<Collider2D>();
        proxy  = col.GetComponent<PhotonViewProxy>();
 
         if (proxy && proxy.photonView.Owner != this.photonView.Owner)

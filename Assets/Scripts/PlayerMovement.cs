@@ -36,11 +36,11 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
                 photonView.RPC("MakeVisible", RpcTarget.All, true);
                 //Player.GetComponentInChildren<SpriteRenderer>().enabled = true;
             }
-            else if (Input.GetMouseButtonUp(1))
-            {
-                photonView.RPC("MakeVisible", RpcTarget.All, false);
-                //Player.GetComponentInChildren<SpriteRenderer>().enabled = false;
-            }
+            // else if (Input.GetMouseButtonUp(1))
+            // {
+            //     photonView.RPC("MakeVisible", RpcTarget.All, false);
+            //     //Player.GetComponentInChildren<SpriteRenderer>().enabled = false;
+            // }
         }
         else
         {
