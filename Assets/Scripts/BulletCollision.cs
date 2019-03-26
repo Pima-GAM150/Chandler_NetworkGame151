@@ -8,10 +8,10 @@ public class BulletCollision : MonoBehaviourPun, IPunObservable
    public PhotonViewProxy proxy;
     void OnTriggerEnter2D(Collider2D col)
     {
-        col = GetComponentInChildren<Collider2D>();
-       proxy  = col.GetComponent<PhotonViewProxy>();
 
-        if (proxy && proxy.photonView.Owner != this.photonView.Owner)
+
+
+        if (proxy && proxy.photonView.Owner != photonView.Owner)
         {
             PhotonNetwork.Destroy(this.gameObject);
             Debug.Log("hit other player");

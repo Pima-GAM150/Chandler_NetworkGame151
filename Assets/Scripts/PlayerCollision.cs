@@ -14,7 +14,7 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
 
     void Awake()
     {
-         proxy = this.GetComponent<PhotonViewProxy>();
+        
         find = this;
         playerHealth = maxHealth;
         
@@ -22,14 +22,13 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        proxy = col.GetComponent<PhotonViewProxy>();
-        if (proxy && proxy.photonView.Owner != this.photonView.Owner)
-        {
+      
+        
            
                 takeDamage(amount);
                 Debug.Log("player hit");
             
-        }
+        
     }
 
     public void takeDamage(int amount) {
