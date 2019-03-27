@@ -8,7 +8,7 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
 
     public int currentHealth;
     int amount = 1;
-    public int maxHealth = 10;
+    public int maxHealth = 3;
     public Slider playerOneHealth;
   public  PhotonViewProxy proxy;
     public static PlayerCollision find;
