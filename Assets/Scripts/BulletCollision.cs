@@ -4,7 +4,6 @@ using UnityEngine;
 using Photon.Pun;
 public class BulletCollision : MonoBehaviourPun, IPunObservable
 {
-    int bulletDamage = 1;
    public PlayerCollision playerCollision;
    public PhotonViewProxy proxy;
     void Awake()

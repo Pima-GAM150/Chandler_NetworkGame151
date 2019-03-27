@@ -12,6 +12,7 @@ public class NetworkedObjects : MonoBehaviour
     public GameObject Player;
     public GameObject bullet;
     public Transform shootPoint;
+    public PlayerCollision playerCollision;
 
 
 
@@ -33,6 +34,7 @@ public class NetworkedObjects : MonoBehaviour
 
     void Start()
     {
+    
 
         if (PhotonNetwork.IsMasterClient)
         {
@@ -46,12 +48,12 @@ public class NetworkedObjects : MonoBehaviour
 
         Vector3 spawnPos = world.bounds.center + new Vector3(xRange, yRange, 0f);
        PhotonNetwork.Instantiate("Player", spawnPos, Quaternion.identity, 0);
+      
 
     }
     void Update()
     {
         netFire();
-        //netFire2();
     }
 
     public bool netFire() {

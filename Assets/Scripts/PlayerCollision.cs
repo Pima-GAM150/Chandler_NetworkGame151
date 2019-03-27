@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.UI;
 public class PlayerCollision : MonoBehaviourPun, IPunObservable
 {
 
-
+    public int currentHealth;
     int amount = 1;
-    int maxHealth = 20;
-    public int playerHealth;
+    public int maxHealth = 20;
+    public Slider playerOneHealth;
   public  PhotonViewProxy proxy;
     public static PlayerCollision find;
 
@@ -16,20 +17,25 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
     {
 
         find = this;
-        playerHealth = maxHealth;
-        
     }
+    void Start() {
+        // photonView.RPC("setAmounts", RpcTarget.All);
+        currentHealth = maxHealth;
+        playerOneHealth = GameObject.Find("PlayerOneHealth").GetComponent<Slider>();
+    }
+    
 
     void OnTriggerEnter2D(Collider2D col)
     {
+      
         print("player hit " + col.gameObject.name);
-        
+        photonView.RPC("takeDamage", RpcTarget.All, amount);
 
         proxy = col.GetComponent<PhotonViewProxy>();
         
         if (proxy && proxy.photonView.Owner != this.photonView.Owner)
         {
-            photonView.RPC("takeDamage", RpcTarget.All, amount);
+            //photonView.RPC("takeDamage", RpcTarget.All, amount);
             Debug.Log("player takes damage hit");
 //
         }
@@ -37,10 +43,12 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
     [PunRPC]
     public void takeDamage(int amount) {
            
-                playerHealth -= amount;
-                Debug.Log("Took damage of " + amount + " so health was modified to " + playerHealth);
+                currentHealth -= amount;
+        playerOneHealth.value = currentHealth;
+                Debug.Log("Took damage of " + amount + " so health was modified to " + currentHealth);
      
          }
+
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
