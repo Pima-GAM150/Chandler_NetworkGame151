@@ -13,19 +13,14 @@ public class BulletCollision : MonoBehaviourPun, IPunObservable
     }
     void OnTriggerEnter2D(Collider2D col)
     {
-<<<<<<< HEAD
         print( "Bullet hit " + col.gameObject.name );
         // col = GetComponentInChildren<Collider2D>();
        proxy  = col.GetComponent<PhotonViewProxy>();
-=======
->>>>>>> master
 
-
-
-        if (proxy && proxy.photonView.Owner != photonView.Owner)
+        if (proxy && proxy.photonView.Owner != this.photonView.Owner)
         {
            // PhotonNetwork.Destroy(this.gameObject);
-            playerCollision.photonView.RPC( "takeDamage", RpcTarget.All , bulletDamage);
+            
             Debug.Log("hit other player");
 
         }

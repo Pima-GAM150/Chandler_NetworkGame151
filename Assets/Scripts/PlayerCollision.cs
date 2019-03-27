@@ -7,18 +7,14 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
 
 
     int amount = 1;
-    int maxHealth = 10;
+    int maxHealth = 20;
     public int playerHealth;
   public  PhotonViewProxy proxy;
     public static PlayerCollision find;
 
     void Awake()
     {
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> master
         find = this;
         playerHealth = maxHealth;
         
@@ -26,26 +22,17 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
 
     void OnTriggerEnter2D(Collider2D col)
     {
-<<<<<<< HEAD
         print("player hit " + col.gameObject.name);
-        // col = GetComponentInChildren<Collider2D>();
-        proxy = col.GetComponent<PhotonViewProxy>();
+        
 
+        proxy = col.GetComponent<PhotonViewProxy>();
+        
         if (proxy && proxy.photonView.Owner != this.photonView.Owner)
         {
-            takeDamage(amount);
+            photonView.RPC("takeDamage", RpcTarget.All, amount);
             Debug.Log("player takes damage hit");
-
+//
         }
-=======
-      
-        
-           
-                takeDamage(amount);
-                Debug.Log("player hit");
-            
-        
->>>>>>> master
     }
     [PunRPC]
     public void takeDamage(int amount) {
