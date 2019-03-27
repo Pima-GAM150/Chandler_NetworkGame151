@@ -19,9 +19,17 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
         find = this;
     }
     void Start() {
-        // photonView.RPC("setAmounts", RpcTarget.All);
+        if (photonView.IsMine)
+        {
+            playerOneHealth = GameObject.Find("PlayerOneHealth").GetComponent<Slider>();
+        }
+        else {
+            playerOneHealth = GameObject.Find("PlayerTwoHealth").GetComponent<Slider>();
+        }
+            
         currentHealth = maxHealth;
-        playerOneHealth = GameObject.Find("PlayerOneHealth").GetComponent<Slider>();
+        playerOneHealth.value = currentHealth;
+       
     }
     
 
@@ -29,13 +37,13 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
     {
       
         print("player hit " + col.gameObject.name);
-        photonView.RPC("takeDamage", RpcTarget.All, amount);
+      
 
         proxy = col.GetComponent<PhotonViewProxy>();
         
         if (proxy && proxy.photonView.Owner != this.photonView.Owner)
         {
-            //photonView.RPC("takeDamage", RpcTarget.All, amount);
+            photonView.RPC("takeDamage", RpcTarget.All, amount);
             Debug.Log("player takes damage hit");
 //
         }
