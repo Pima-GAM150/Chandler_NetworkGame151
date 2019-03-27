@@ -23,9 +23,7 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
         {
             playerOneHealth = GameObject.Find("PlayerOneHealth").GetComponent<Slider>();
         }
-        else {
-            playerOneHealth = GameObject.Find("PlayerTwoHealth").GetComponent<Slider>();
-        }
+
             
         currentHealth = maxHealth;
         playerOneHealth.value = currentHealth;
