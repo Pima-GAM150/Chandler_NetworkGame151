@@ -8,7 +8,7 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
 
     public int currentHealth;
     int amount = 1;
-    public int maxHealth = 20;
+    public int maxHealth = 10;
     public Slider playerOneHealth;
   public  PhotonViewProxy proxy;
     public static PlayerCollision find;
@@ -43,7 +43,7 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
         {
             photonView.RPC("takeDamage", RpcTarget.All, amount);
             Debug.Log("player takes damage hit");
-//
+
         }
     }
     [PunRPC]
@@ -52,8 +52,13 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
                 currentHealth -= amount;
         playerOneHealth.value = currentHealth;
                 Debug.Log("Took damage of " + amount + " so health was modified to " + currentHealth);
-     
+        if (currentHealth <= 0 && proxy && proxy.photonView.Owner != this.photonView.Owner) {
+          // PhotonNetwork.Disconnect();
+            //PhotonNetwork.Destroy(this.gameObject);
+            
+        }
          }
+
 
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

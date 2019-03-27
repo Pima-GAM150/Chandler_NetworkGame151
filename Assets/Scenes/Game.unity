@@ -867,6 +867,11 @@ PrefabInstance:
       propertyPath: playerCollision
       value: 
       objectReference: {fileID: 54, guid: 18fa9a5f0756a074c969a4d18c8bb860, type: 3}
+    - target: {fileID: 1063087980117284460, guid: b9ff0858e8d55984893c9d82d6b668f3,
+        type: 3}
+      propertyPath: coolDownTime
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1063087979494893118, guid: b9ff0858e8d55984893c9d82d6b668f3,
         type: 3}
       propertyPath: healthText

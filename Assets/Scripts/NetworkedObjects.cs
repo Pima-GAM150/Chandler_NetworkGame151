@@ -13,7 +13,8 @@ public class NetworkedObjects : MonoBehaviour
     public GameObject bullet;
     public Transform shootPoint;
     public PlayerCollision playerCollision;
-
+    public float coolDownTime;
+    private float nextFiretime;
 
 
     // keep track of all the players in the game
@@ -65,12 +66,15 @@ public class NetworkedObjects : MonoBehaviour
         Quaternion q = Quaternion.FromToRotation(Vector2.up, screenPos - playerPos);
         if (Input.GetMouseButtonDown(0) && Input.GetMouseButton(1) )
         {
-            if (transform.localScale.x < 0 && bulletCreated == false)
+            if (transform.localScale.x < 0 && bulletCreated == false && nextFiretime < Time.time)
             {
+                nextFiretime = Time.time + coolDownTime;
                 bullet = PhotonNetwork.Instantiate("Bullet",
                 new Vector2(playerPos.x, playerPos.y), q);
             }
-            else {
+            else if (nextFiretime < Time.time)
+            {
+                nextFiretime = Time.time + coolDownTime;
                 bullet = PhotonNetwork.Instantiate("Bullet",
                new Vector2(playerPos.x, playerPos.y), q);
             }

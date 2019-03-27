@@ -18,7 +18,7 @@ public class BulletCollision : MonoBehaviourPun, IPunObservable
 
         if (proxy && proxy.photonView.Owner != this.photonView.Owner)
         {
-           // PhotonNetwork.Destroy(this.gameObject);
+           PhotonNetwork.Destroy(this.gameObject);
             
             Debug.Log("hit other player");
 
