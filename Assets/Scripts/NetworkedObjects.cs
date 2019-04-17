@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 using Photon.Pun;
 
@@ -12,17 +13,18 @@ public class NetworkedObjects : MonoBehaviour
     public GameObject Player;
     public GameObject bullet;
     public Transform shootPoint;
-    public PlayerRotation playerRotation;
-    Vector2 playerPos;
-    Vector2 mousePos;
-    Vector2 screenPos;
-    Quaternion q;
+    public PlayerCollision playerCollision;
+    public PlayerMovement playerMove;
+    public float coolDownTime;
+    private float nextFiretime;
+    public Canvas canvas;
+    
 
 
-// keep track of all the players in the game
-[HideInInspector] public List<PhotonView> players = new List<PhotonView>();
+    // keep track of all the players in the game
+    [HideInInspector] public List<PhotonView> players = new List<PhotonView>();
     [HideInInspector] public List<PhotonView> bullets = new List<PhotonView>();
-
+    public List<Slider> healthBars = new List<Slider>();
     public static NetworkedObjects find;
    
 
@@ -37,6 +39,7 @@ public class NetworkedObjects : MonoBehaviour
 
     void Start()
     {
+    
 
         if (PhotonNetwork.IsMasterClient)
         {
@@ -50,32 +53,35 @@ public class NetworkedObjects : MonoBehaviour
 
         Vector3 spawnPos = world.bounds.center + new Vector3(xRange, yRange, 0f);
        PhotonNetwork.Instantiate("Player", spawnPos, Quaternion.identity, 0);
+       
+      
 
     }
     void Update()
     {
-        playerPos = players[0].GetComponent<PlayerMovement>().appearance.position;
-         mousePos = Input.mousePosition;
-         screenPos = Camera.main.ScreenToWorldPoint(new Vector2(mousePos.x, mousePos.y));
-         q = Quaternion.FromToRotation(Vector2.up, screenPos - playerPos);
         netFire();
-        //netFire2();
     }
 
     public bool netFire() {
        
             bool bulletCreated = false;
- 
+        Vector2 playerPos = players[0].GetComponent<PlayerMovement>().appearance.position;
+        Vector2 mousePos = Input.mousePosition;
+        Vector2 screenPos = Camera.main.ScreenToWorldPoint(new Vector2(mousePos.x, mousePos.y));
+        Quaternion q = Quaternion.FromToRotation(Vector2.up, screenPos - playerPos);
         if (Input.GetMouseButtonDown(0) && Input.GetMouseButton(1) )
         {
-            if (transform.localScale.x < 0 && bulletCreated == false)
+            if (transform.localScale.x < 0 && bulletCreated == false && nextFiretime < Time.time)
             {
+                nextFiretime = Time.time + coolDownTime;
                 bullet = PhotonNetwork.Instantiate("Bullet",
-                new Vector2(playerPos.x , playerPos.y), q);
+                new Vector2(playerPos.x, playerPos.y), q);
             }
-            else {
+            else if (nextFiretime < Time.time)
+            {
+                nextFiretime = Time.time + coolDownTime;
                 bullet = PhotonNetwork.Instantiate("Bullet",
-               new Vector2(playerPos.x , playerPos.y ), q);
+               new Vector2(playerPos.x, playerPos.y), q);
             }
             bulletCreated = true;
         }
@@ -88,6 +94,7 @@ public class NetworkedObjects : MonoBehaviour
     {
         // add a player to the list of all tracked players
         players.Add(player);
+        ChangeParent();
         foreach (PhotonView players in players)
         {
             Player.GetComponentInChildren<SpriteRenderer>().enabled = false;
@@ -104,6 +111,13 @@ public class NetworkedObjects : MonoBehaviour
         bullets.Add(bullet);
   
     }
+    public void ChangeParent()
+    {
 
+        for (int p = 0; p < players.Count; p++)
+        {
+            players[p].transform.SetParent(canvas.transform);
+        }
+    }
 
 }

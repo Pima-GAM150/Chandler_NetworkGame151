@@ -12,6 +12,7 @@ public class BulletMovement : MonoBehaviourPun, IPunObservable
     bool isInstanciated;
 
 
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -25,15 +26,18 @@ public class BulletMovement : MonoBehaviourPun, IPunObservable
 
         if (photonView.IsMine)
         {
+            
             if (!isInstanciated)
             {
-                StartCoroutine(waitForInstanciate());
+                StartCoroutine(waitForInstanciate()); 
                 StopAllCoroutines();
                 StartCoroutine(destroyBullet());
+           
                 isInstanciated = true;
             }
-           
-            fire();
+    
+            
+                fire();
             
 
 
@@ -57,6 +61,7 @@ public class BulletMovement : MonoBehaviourPun, IPunObservable
         yield return new WaitForSeconds(1);
         PhotonNetwork.Destroy(this.gameObject);
     }
+  
 
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

@@ -2,41 +2,81 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.UI;
 public class PlayerCollision : MonoBehaviourPun, IPunObservable
 {
 
-
+    public int currentHealth;
     int amount = 1;
-    int maxHealth = 10;
-    public int playerHealth;
+    public int maxHealth = 3;
+    public Slider playerOneHealth;
   public  PhotonViewProxy proxy;
     public static PlayerCollision find;
 
     void Awake()
     {
-        
+
         find = this;
-        playerHealth = maxHealth;
-        
     }
+    void Start() {
+        if (photonView.IsMine)
+        {
+            playerOneHealth = GameObject.Find("PlayerOneHealth").GetComponent<Slider>();
+        }
+
+            
+        currentHealth = maxHealth;
+        playerOneHealth.value = currentHealth;
+       
+    }
+    
 
     void OnTriggerEnter2D(Collider2D col)
     {
       
-        
-           
-                takeDamage(amount);
-                Debug.Log("player hit");
-            
-        
-    }
+        print("player hit " + col.gameObject.name);
+      
 
+        proxy = col.GetComponent<PhotonViewProxy>();
+        
+        if (proxy && proxy.photonView.Owner != this.photonView.Owner)
+        {
+            photonView.RPC("takeDamage", RpcTarget.All, amount);
+            Debug.Log("player takes damage hit");
+
+            if (isDead()) {
+                //change scene
+                if(PhotonNetwork.IsMasterClient)
+{
+                    PhotonNetwork.LoadLevel("Arena2");
+                }
+
+            }
+        }
+    }
+    [PunRPC]
     public void takeDamage(int amount) {
            
-                this.playerHealth -= amount;
-                Debug.Log("Took damage of " + amount + " so health was modified to " + playerHealth);
-     
+                currentHealth -= amount;
+        playerOneHealth.value = currentHealth;
+                Debug.Log("Took damage of " + amount + " so health was modified to " + currentHealth);
+        if (currentHealth <= 0 && proxy && proxy.photonView.Owner != this.photonView.Owner) {
+          // PhotonNetwork.Disconnect();
+            //PhotonNetwork.Destroy(this.gameObject);
+            
+        }
          }
+
+    public bool isDead()
+    {
+        if (currentHealth <= 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
+
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {

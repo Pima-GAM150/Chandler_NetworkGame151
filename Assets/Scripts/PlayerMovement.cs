@@ -38,9 +38,9 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
             }
             else if (Input.GetMouseButtonUp(1))
             {
-                photonView.RPC("MakeVisible", RpcTarget.All, false);
-                //Player.GetComponentInChildren<SpriteRenderer>().enabled = false;
-            }
+                 photonView.RPC("MakeVisible", RpcTarget.All, false);
+                 //Player.GetComponentInChildren<SpriteRenderer>().enabled = false;
+             }
         }
         else
         {
@@ -54,10 +54,7 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
     }
 
     [PunRPC]
-    public void MakeVisible( bool isVisible )
-    {
-        Player.GetComponentInChildren<SpriteRenderer>().enabled = isVisible;
-    }
+    public void MakeVisible(bool isVisible) => Player.GetComponentInChildren<SpriteRenderer>().enabled = isVisible;
 
     // read and write to a serialized data stream to send this object's position information
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
