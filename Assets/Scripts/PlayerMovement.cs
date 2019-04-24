@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviourPun, IPunObservable
 {
@@ -10,6 +11,10 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
     public Transform appearance;
     public Transform target;
     public Vector3 lastSyncedPos;
+
+    void Awake() {
+        photonView.RPC("MakeSliderVisible", RpcTarget.All, false);
+    }
 
     void Update()
     {
@@ -34,13 +39,15 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
             if (Input.GetMouseButtonDown(1))
             {
                 photonView.RPC("MakeVisible", RpcTarget.All, true);
+                photonView.RPC("MakeSliderVisible", RpcTarget.All, true);
                 //Player.GetComponentInChildren<SpriteRenderer>().enabled = true;
             }
             else if (Input.GetMouseButtonUp(1))
             {
-                 photonView.RPC("MakeVisible", RpcTarget.All, false);
-                 //Player.GetComponentInChildren<SpriteRenderer>().enabled = false;
-             }
+                photonView.RPC("MakeVisible", RpcTarget.All, false);
+                photonView.RPC("MakeSliderVisible", RpcTarget.All, false);
+                //Player.GetComponentInChildren<SpriteRenderer>().enabled = false;
+            }
         }
         else
         {
@@ -49,12 +56,14 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
 
             //appearance.position = target.position; // for jerky but accurate movement
         }
- 
+
 
     }
 
     [PunRPC]
     public void MakeVisible(bool isVisible) => Player.GetComponentInChildren<SpriteRenderer>().enabled = isVisible;
+    [PunRPC]
+    public void MakeSliderVisible(bool isVisible) => Player.GetComponentInChildren<Image>().enabled = isVisible;
 
     // read and write to a serialized data stream to send this object's position information
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

@@ -98,7 +98,12 @@ public class NetworkedObjects : MonoBehaviour
         foreach (PhotonView players in players)
         {
             Player.GetComponentInChildren<SpriteRenderer>().enabled = false;
+
+             //playerMove.photonView.RPC("MakeSliderVisible", RpcTarget.All, false);
+            
+
         }
+       
         // only the "server" has authority over which color the player should be and its seed
         if (PhotonNetwork.IsMasterClient)
         {
