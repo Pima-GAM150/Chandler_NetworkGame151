@@ -44,15 +44,11 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
             photonView.RPC("takeDamage", RpcTarget.All, amount);
             Debug.Log("player takes damage hit");
 
-            if (isDead()) {
-                //change scene
-                if(PhotonNetwork.IsMasterClient)
-{
-                    PhotonNetwork.LoadLevel("Arena2");
-                }
-
-            }
+            
         }
+
+
+        
     }
     [PunRPC]
     public void takeDamage(int amount) {
@@ -60,21 +56,17 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
                 currentHealth -= amount;
         playerOneHealth.value = currentHealth;
                 Debug.Log("Took damage of " + amount + " so health was modified to " + currentHealth);
-        if (currentHealth <= 0 && proxy && proxy.photonView.Owner != this.photonView.Owner) {
-          // PhotonNetwork.Disconnect();
-            //PhotonNetwork.Destroy(this.gameObject);
+        if (currentHealth <= 0) { //if a player is dead
+
+            if (PhotonNetwork.IsMasterClient)
+                PhotonNetwork.LoadLevel("Arena2");
+
             
+
         }
          }
 
-    public bool isDead()
-    {
-        if (currentHealth <= 0)
-        {
-            return true;
-        }
-        return false;
-    }
+ 
 
 
 

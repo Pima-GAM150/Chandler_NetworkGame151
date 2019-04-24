@@ -53,6 +53,8 @@ public class NetworkedObjects : MonoBehaviour
 
         Vector3 spawnPos = world.bounds.center + new Vector3(xRange, yRange, 0f);
        PhotonNetwork.Instantiate("Player", spawnPos, Quaternion.identity, 0);
+
+        PhotonNetwork.AutomaticallySyncScene = true;
        
       
 
