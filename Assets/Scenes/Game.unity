@@ -622,6 +622,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6222012752753871795, guid: e1ad5730d76dbc642b2f175a7213abeb,
         type: 3}
+    - target: {fileID: 1063087980117284460, guid: b9ff0858e8d55984893c9d82d6b668f3,
+        type: 3}
+      propertyPath: shootPoint
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1063087979494893118, guid: b9ff0858e8d55984893c9d82d6b668f3,
         type: 3}
       propertyPath: healthText
