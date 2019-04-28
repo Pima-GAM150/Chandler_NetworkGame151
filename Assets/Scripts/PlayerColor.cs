@@ -15,7 +15,10 @@ public class PlayerColor : MonoBehaviourPun
 	// synchronous assignment of color to the player from the "server"
 	[PunRPC]
 	public void SetColor( int order ) {
-		currentColor = playerColors[ order ];
-		rend.color = currentColor;
+       
+        currentColor = playerColors[ order ];
+        order = 0;
+        rend.color = currentColor;
+       
 	}
 }

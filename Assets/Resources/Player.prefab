@@ -406,6 +406,10 @@ MonoBehaviour:
   maxHealth: 3
   playerOneHealth: {fileID: 4688435938412051806}
   proxy: {fileID: 6222012752753871786}
+  p1scoreText: {fileID: 6643405720366937046, guid: 0d08b676d591fa042a446b914ca1a1b1,
+    type: 3}
+  p2scoreText: {fileID: 2376423771051715218, guid: 56c9be382a106004ab874ac6d1e59477,
+    type: 3}
 --- !u!50 &4322733183610911907
 Rigidbody2D:
   serializedVersion: 4
