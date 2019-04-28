@@ -33,5 +33,6 @@ MonoBehaviour:
   - takeDamage
   - setAmounts
   - MakeSliderVisible
+  - SetColor
   DisableAutoOpenWizard: 1
   ShowSettings: 1

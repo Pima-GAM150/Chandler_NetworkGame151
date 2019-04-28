@@ -61,6 +61,7 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
             if (PhotonNetwork.IsMasterClient)
                 PhotonNetwork.LoadLevel("Arena2");
 
+
             
 
         }

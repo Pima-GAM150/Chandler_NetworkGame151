@@ -230,7 +230,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6222012752753871746}
-  - component: {fileID: 6222012752753871802}
+  - component: {fileID: 9041477918773443579}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -253,7 +253,7 @@ Transform:
   m_Father: {fileID: 6222012752753871804}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6222012752753871802
+--- !u!212 &9041477918773443579
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -315,6 +315,7 @@ GameObject:
   - component: {fileID: 6222012752753871788}
   - component: {fileID: 6222012752753871787}
   - component: {fileID: 4322733183610911907}
+  - component: {fileID: 7630043235055604763}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -426,6 +427,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7630043235055604763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6222012752753871751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47ee39826d8781d4da51e2564c963d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerColors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 0, b: 0, a: 1}
+  rend: {fileID: 9041477918773443579}
 --- !u!1 &8265495789899828072
 GameObject:
   m_ObjectHideFlags: 0

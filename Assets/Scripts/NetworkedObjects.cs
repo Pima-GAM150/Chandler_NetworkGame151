@@ -15,6 +15,7 @@ public class NetworkedObjects : MonoBehaviour
     public Transform shootPoint;
     public PlayerCollision playerCollision;
     public PlayerMovement playerMove;
+    public PlayerColor playerColor;
     public float coolDownTime;
     private float nextFiretime;
     public Canvas canvas;
@@ -109,6 +110,7 @@ public class NetworkedObjects : MonoBehaviour
         // only the "server" has authority over which color the player should be and its seed
         if (PhotonNetwork.IsMasterClient)
         {
+            player.RPC("SetColor", RpcTarget.AllBuffered, players.Count - 1);
            
         }
     }

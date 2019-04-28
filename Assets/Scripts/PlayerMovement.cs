@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviourPun, IPunObservable
             // move the renderer for this player immediately to its ideal position
             appearance.position = target.position;
 
-            if (Input.GetMouseButtonDown(1))
+           if (Input.GetMouseButtonDown(1))
             {
                 photonView.RPC("MakeVisible", RpcTarget.All, true);
                 photonView.RPC("MakeSliderVisible", RpcTarget.All, true);
