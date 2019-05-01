@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerCollision : MonoBehaviourPun, IPunObservable
 {
-
+    public NetworkedObjects networkedObjects;
     public int currentHealth;
     int amount = 1;
     public int maxHealth = 3;
@@ -55,9 +55,6 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
         {
             photonView.RPC("takeDamage", RpcTarget.All, amount);
 
-            // Debug.Log("player takes damage hit");
-
-
         }
 
     }
@@ -69,11 +66,13 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
         //Debug.Log("Took damage of " + amount + " so health was modified to " + currentHealth);
         if (currentHealth <= 0) { //if a player is dead
 
-            if (PhotonNetwork.IsMasterClient)
+            if (PhotonNetwork.IsMasterClient && SceneManager.GetSceneByName("Game").isLoaded)
+            {
 
                 PhotonNetwork.LoadLevel("Arena2");
 
-            photonView.RPC("SetScoreText", RpcTarget.All);
+                photonView.RPC("SetScoreText", RpcTarget.All);
+            }
 
             if (SceneManager.GetSceneByName("Arena2").isLoaded)
             {
@@ -81,10 +80,12 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
                 { //if a player is dead
 
                     if (PhotonNetwork.IsMasterClient)
+                    {
 
                         PhotonNetwork.LoadLevel("Game");
 
-                    photonView.RPC("SetScoreText", RpcTarget.All);
+                        photonView.RPC("SetScoreText", RpcTarget.All);
+                    }
                 }
             }
 
@@ -94,18 +95,38 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
     [PunRPC] 
     public void SetScoreText()
     {
-        if (proxy && proxy.photonView.Owner != this.photonView.Owner)
+        if (PhotonNetwork.IsMasterClient)
         {
-            p1score++;
-            p1scoreText.text = p1score.ToString();
-           //  Debug.Log(p1score + "player ones score");
+            if (photonView.IsMine)
+            {
+                p2score++;
+                p2scoreText.text = p2score.ToString();
+                
+            }
+            else
+            {
+                p1score++;
+                p1scoreText.text = p1score.ToString();
+            }
         }
         else {
-            p2score++;
-            p2scoreText.text = p2score.ToString();
-           // Debug.Log(p2score + "player twos score");
+            if (photonView.IsMine)
+            {
+                p1score++;
+                p1scoreText.text = p1score.ToString();
+               
+               
+            }
+            else
+            {
+                p2score++;
+                p2scoreText.text = p2score.ToString();
+            }
         }
+
     }
+          
+        
 
 
 

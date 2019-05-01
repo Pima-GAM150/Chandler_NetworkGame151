@@ -402,6 +402,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 111b52bc4ff3f414ea07a356f4c29aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  networkedObjects: {fileID: 1063087980117284460, guid: b9ff0858e8d55984893c9d82d6b668f3,
+    type: 3}
   currentHealth: 0
   maxHealth: 3
   playerOneHealth: {fileID: 4688435938412051806}

@@ -929,6 +929,31 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6643405720366937046, guid: 0d08b676d591fa042a446b914ca1a1b1,
+        type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643405720366937046, guid: 0d08b676d591fa042a446b914ca1a1b1,
+        type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643405720366937046, guid: 0d08b676d591fa042a446b914ca1a1b1,
+        type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643405720366937046, guid: 0d08b676d591fa042a446b914ca1a1b1,
+        type: 3}
+      propertyPath: m_inputSource
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643405720366937046, guid: 0d08b676d591fa042a446b914ca1a1b1,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190335
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d08b676d591fa042a446b914ca1a1b1, type: 3}
 --- !u!224 &1788893717 stripped
