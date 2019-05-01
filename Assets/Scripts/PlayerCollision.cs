@@ -54,23 +54,25 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
 
 
     }
-    void Update() {
-
-
-    }
 
 
     void OnTriggerEnter2D(Collider2D col)
     {
 
-        // print("player hit " + col.gameObject.name);
+        
 
 
         proxy = col.GetComponent<PhotonViewProxy>();
 
         if (proxy && proxy.photonView.Owner != this.photonView.Owner)
         {
-            photonView.RPC("takeDamage", RpcTarget.All, amount);
+            print("Player hit proxy " + proxy.name);
+            if (proxy.photonView.GetComponent<Player>() == null)
+            {
+                print("This proxy has no player component...");
+                photonView.RPC("takeDamage", RpcTarget.All, amount);
+            }
+            
 
         }
 
@@ -100,9 +102,9 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
                     PhotonNetwork.LoadLevel("Game");
                 }
             }
-
             
         }
+
     }
 
     
@@ -115,41 +117,6 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
 
         UI.manager.p1scoreText.text = p1score.ToString();
         UI.manager.p2scoreText.text = p2score.ToString();
-
-        /*
-        if (PhotonNetwork.IsMasterClient)
-        {
-            if (photonView.IsMine)
-            {
-                p2score++;
-                p2scoreText.text = p2score.ToString();
-                Debug.Log("1");
-         
-            }
-            else
-            {
-                p1score++;
-                p1scoreText.text = p1score.ToString();
-                Debug.Log("2");
-            }
-        }
-        else
-        {
-            if (photonView.IsMine)
-            { 
-                p1score++;
-                p1scoreText.text = p1score.ToString();
-                Debug.Log("3");
-
-            }
-            else
-            {
-                p2score++;
-                p2scoreText.text = p2score.ToString();
-                Debug.Log("4");
-            }
-        }
-        */
     }
           
         

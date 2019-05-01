@@ -442,7 +442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerColors:
-  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 1, g: 0.9654912, b: 0, a: 1}
   - {r: 0, g: 0, b: 0, a: 1}
   rend: {fileID: 9041477918773443579}
 --- !u!1 &8265495789899828072
