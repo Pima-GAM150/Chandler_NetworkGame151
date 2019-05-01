@@ -16,6 +16,9 @@ public class JoinGame : MonoBehaviourPunCallbacks // override callback methods t
 
     void Start()
     {
+        // Reset preferences and score
+        PlayerPrefs.SetInt("p1score", 0);
+        PlayerPrefs.SetInt("p2score", 0);
 
         // keep the scenes of the different connected clients in sync with this one
         PhotonNetwork.AutomaticallySyncScene = true;

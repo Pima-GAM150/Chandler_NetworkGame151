@@ -15,19 +15,32 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
     public Slider playerOneHealth;
     public PhotonViewProxy proxy;
     public static PlayerCollision find;
-    int p1score;
-    public TextMeshProUGUI p1scoreText;
-    int p2score;
-    public TextMeshProUGUI p2scoreText;
+    public int p1score
+    {
+        get { return PlayerPrefs.GetInt("p1score", 0); ; }
+        set {
+            PlayerPrefs.SetInt("p1score", value);
+        }
+    }
+
+    public int p2score
+    {
+        get { return PlayerPrefs.GetInt("p2score", 0); ; }
+        set
+        {
+            PlayerPrefs.SetInt("p2score", value);
+        }
+    }
 
     void Awake()
     {
-        p1score=0;
-        p1scoreText.text = p1score.ToString();
-        p2score=0;
-        p2scoreText.text = p2score.ToString();
+        UI.manager.p1scoreText.text = p1score.ToString();
+        UI.manager.p2scoreText.text = p2score.ToString();
         find = this;
     }
+
+  
+
     void Start() {
         if (photonView.IsMine)
         {
@@ -38,6 +51,10 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
         currentHealth = maxHealth;
         playerOneHealth.value = currentHealth;
 
+
+
+    }
+    void Update() {
 
 
     }
@@ -63,67 +80,76 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
 
         currentHealth -= amount;
         playerOneHealth.value = currentHealth;
+    
         //Debug.Log("Took damage of " + amount + " so health was modified to " + currentHealth);
         if (currentHealth <= 0) { //if a player is dead
 
-            if (PhotonNetwork.IsMasterClient && SceneManager.GetSceneByName("Game").isLoaded)
+            if( PhotonNetwork.IsMasterClient )
             {
+                if (order == 0) p2score++;
+                else p1score++;
+                photonView.RPC("SetScoreText", RpcTarget.All, p1score, p2score);
 
-                PhotonNetwork.LoadLevel("Arena2");
-
-                photonView.RPC("SetScoreText", RpcTarget.All);
-            }
-
-            if (SceneManager.GetSceneByName("Arena2").isLoaded)
-            {
-                if (currentHealth <= 0)
-                { //if a player is dead
-
-                    if (PhotonNetwork.IsMasterClient)
-                    {
-
-                        PhotonNetwork.LoadLevel("Game");
-
-                        photonView.RPC("SetScoreText", RpcTarget.All);
-                    }
+                if (SceneManager.GetSceneByName("Game").isLoaded)
+                {
+                    PhotonNetwork.LoadLevel("Arena2");
+                }
+                else if (SceneManager.GetSceneByName("Arena2").isLoaded)
+                {
+                    // photonView.RPC("SetScoreText", RpcTarget.All, p1score, p2score);
+                    PhotonNetwork.LoadLevel("Game");
                 }
             }
 
+            
         }
     }
 
+    
+
     [PunRPC] 
-    public void SetScoreText()
+    public void SetScoreText( int p1Score,  int p2Score)
     {
+        this.p1score = p1Score;
+        this.p2score = p2Score;
+
+        UI.manager.p1scoreText.text = p1score.ToString();
+        UI.manager.p2scoreText.text = p2score.ToString();
+
+        /*
         if (PhotonNetwork.IsMasterClient)
         {
             if (photonView.IsMine)
             {
                 p2score++;
                 p2scoreText.text = p2score.ToString();
-                
+                Debug.Log("1");
+         
             }
             else
             {
                 p1score++;
                 p1scoreText.text = p1score.ToString();
+                Debug.Log("2");
             }
         }
-        else {
+        else
+        {
             if (photonView.IsMine)
-            {
+            { 
                 p1score++;
                 p1scoreText.text = p1score.ToString();
-               
-               
+                Debug.Log("3");
+
             }
             else
             {
                 p2score++;
                 p2scoreText.text = p2score.ToString();
+                Debug.Log("4");
             }
         }
-
+        */
     }
           
         
@@ -135,4 +161,6 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
     {
         throw new System.NotImplementedException();
     }
+
+    public int order { get { return GetComponent<PlayerColor>().order; } }
 }

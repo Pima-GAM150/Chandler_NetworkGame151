@@ -11,13 +11,14 @@ public class PlayerColor : MonoBehaviourPun
     public Color currentColor { get; set; }
 
 	public SpriteRenderer rend;
+    public int order { get; set; }
 
 	// synchronous assignment of color to the player from the "server"
 	[PunRPC]
 	public void SetColor( int order ) {
        
         currentColor = playerColors[ order ];
-        order = 0;
+        this.order = order;
         rend.color = currentColor;
        
 	}

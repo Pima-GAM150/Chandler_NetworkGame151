@@ -27,15 +27,26 @@ public class NetworkedObjects : MonoBehaviour
     [HideInInspector] public List<PhotonView> bullets = new List<PhotonView>();
     public List<Slider> healthBars = new List<Slider>();
     public static NetworkedObjects find;
-   
+    private static Canvas canvasInstance;
 
     int seed; // only matters on the master client
 
     // singleton assignment
     void Awake()
     {
+   
+       /* DontDestroyOnLoad(canvas);
+        if (canvasInstance == null)
+        {
+            canvasInstance = this.canvas;
+        }
+        else
+        {
+            Destroy(canvasInstance);
+        }*/
+
         find = this;
- 
+  
     }
 
     void Start()
@@ -98,6 +109,7 @@ public class NetworkedObjects : MonoBehaviour
         // add a player to the list of all tracked players
         players.Add(player);
         ChangeParent();
+
         foreach (PhotonView players in players)
         {
             Player.GetComponentInChildren<SpriteRenderer>().enabled = false;
