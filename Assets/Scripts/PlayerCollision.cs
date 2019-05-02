@@ -64,6 +64,7 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
 
         proxy = col.GetComponent<PhotonViewProxy>();
 
+
         if (proxy && proxy.photonView.Owner != this.photonView.Owner)
         {
             print("Player hit proxy " + proxy.name);
@@ -99,7 +100,24 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
                 else if (SceneManager.GetSceneByName("Arena2").isLoaded)
                 {
                     // photonView.RPC("SetScoreText", RpcTarget.All, p1score, p2score);
-                    PhotonNetwork.LoadLevel("Game");
+                    PhotonNetwork.LoadLevel("Arena3");
+                }
+                else if (SceneManager.GetSceneByName("Arena3").isLoaded)
+                {
+                    // photonView.RPC("SetScoreText", RpcTarget.All, p1score, p2score);
+                    PhotonNetwork.LoadLevel("Arena4");
+                }
+                if (SceneManager.GetSceneByName("Arena4").isLoaded) {
+                    if (p1score > p2score) {
+                        PhotonNetwork.LoadLevel("RedPlayerWin");
+                    }
+                    else if(p2score>p1score) {
+                        PhotonNetwork.LoadLevel("YellowPlayerWin");
+                    }
+                    else if (p1score == p2score) {
+                        PhotonNetwork.LoadLevel("Tie");
+                    }
+
                 }
             }
             

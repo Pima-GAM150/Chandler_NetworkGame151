@@ -20,4 +20,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WaitingRoom.unity
     guid: 16150cb91749ca349aef8d5041212e92
+  - enabled: 1
+    path: Assets/Scenes/Arena3.unity
+    guid: 48a3dd417f8227f4585078f6b76b1277
+  - enabled: 1
+    path: Assets/Scenes/Arena4.unity
+    guid: 7820389013987ee4483721b81cdc3a18
+  - enabled: 1
+    path: Assets/Scenes/RedPlayerWin.unity
+    guid: 32ccb8081e8574a47968fc7c458b60c9
+  - enabled: 1
+    path: Assets/Scenes/YellowPlayerWin.unity
+    guid: a4c993a9b40c54940b313fb20228e3c0
+  - enabled: 1
+    path: Assets/Scenes/Tie.unity
+    guid: 2afeaf969b8c75f46b330146bd4c3a74
   m_configObjects: {}

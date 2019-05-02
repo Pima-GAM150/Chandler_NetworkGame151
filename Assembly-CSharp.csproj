@@ -66,12 +66,14 @@
     <Compile Include="Assets\Scripts\DelayConnect.cs" />
     <Compile Include="Assets\Scripts\DuplicateAndSpaceObject.cs" />
     <Compile Include="Assets\Scripts\JoinGame.cs" />
+    <Compile Include="Assets\Scripts\LeftandRightPlatform.cs" />
     <Compile Include="Assets\Scripts\NetworkedObjects.cs" />
     <Compile Include="Assets\Scripts\PhotonViewProxy.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerCollision.cs" />
     <Compile Include="Assets\Scripts\PlayerColor.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\RotatingPlatform.cs" />
     <Compile Include="Assets\Scripts\UI.cs" />
     <Compile Include="Assets\Scripts\UpAndDownPlatform.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />

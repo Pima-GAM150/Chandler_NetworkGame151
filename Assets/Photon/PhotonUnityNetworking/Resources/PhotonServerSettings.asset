@@ -37,5 +37,8 @@ MonoBehaviour:
   - SetCountText
   - SetScoreText
   - RPC_SyncTimer
+  - moveUpAndDown
+  - leftandright
+  - rotating
   DisableAutoOpenWizard: 1
   ShowSettings: 1

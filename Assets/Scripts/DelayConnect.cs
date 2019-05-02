@@ -61,7 +61,7 @@ public class DelayConnect : MonoBehaviourPunCallbacks
         // triggers countdown timer
         playerCount = PhotonNetwork.PlayerList.Length;
         roomSize = PhotonNetwork.CurrentRoom.MaxPlayers;
-        playerCountDisplay.text = playerCount + ":" + roomSize;
+        playerCountDisplay.text = playerCount + "/" + roomSize;
 
         if (playerCount == roomSize)
         {

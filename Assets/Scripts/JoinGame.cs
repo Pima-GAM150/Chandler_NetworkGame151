@@ -46,7 +46,7 @@ public class JoinGame : MonoBehaviourPunCallbacks // override callback methods t
     {
         label.text = "Creating game...";
         // no current game running, so join a random one
-        PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = 20 }, null); // create a RoomOptions object to control how players can join
+        PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = 2 }, null); // create a RoomOptions object to control how players can join
     }
 
     public override void OnCreatedRoom()
