@@ -142,6 +142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   label: {fileID: 1146735475}
+  networkedObjects: {fileID: 1063087980117284460, guid: b9ff0858e8d55984893c9d82d6b668f3,
+    type: 3}
 --- !u!4 &68935947
 Transform:
   m_ObjectHideFlags: 0

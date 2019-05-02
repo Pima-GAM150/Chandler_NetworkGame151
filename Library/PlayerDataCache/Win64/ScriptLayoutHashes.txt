@@ -5,6 +5,7 @@ SceneListBegin?
 Assets/Scenes/Connection.unity
 Assets/Scenes/Game.unity
 Assets/Scenes/Arena2.unity
+Assets/Scenes/WaitingRoom.unity
 SceneListEnd?
 71bb6a6b6c8f052f948db64c7dd3ca4f PhotonUnityNetworking.Utilities.dll:Photon.Pun.UtilityScripts.PunTeams
 ab039a385ef4459756519a3fe91dccc6 PhotonUnityNetworking.Utilities.dll:Photon.Pun.UtilityScripts.SmoothSyncMovement
@@ -137,7 +138,7 @@ d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.Spa
 e7aa62e1f291228958626e122c23c8f0 PhotonUnityNetworking.Utilities.dll:Photon.Pun.UtilityScripts.ConnectAndJoinRandom
 303ad70ce203ad874efe2965d0fbcff9 Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsEventTracker
 7fb9de8dcf73854b6b328eca1f7a6e6d Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsTracker
-cad052d61d988384bd274e64196e527d Assembly-CSharp.dll:.JoinGame
+f71ea97abbbf832a13acb43fd27eda99 Assembly-CSharp.dll:.JoinGame
 b15c989f61941d099af09d102fab25bd Assembly-CSharp.dll:.BulletMovement
 94017dcc9f00fe671ea7dc427b4da011 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
 eb764a015c001f3feea68076810aa907 Assembly-CSharp.dll:.DuplicateAndSpaceObject
@@ -208,3 +209,6 @@ d9864ada3db659b8d6f66a20aff414b3 PhotonUnityNetworking.dll:Photon.Pun.PhotonView
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 87207d40b89ca632396b05b3cb1e69b0 PhotonUnityNetworking.Utilities.dll:Photon.Pun.UtilityScripts.PlayerNumbering
 c8283c7732e3b6aa70d28f1fed4430ca PhotonUnityNetworking.Utilities.dll:Photon.Pun.UtilityScripts.CountdownTimer
+7d81bdfe35984ae5be9dcc782d2a6776 Assembly-CSharp.dll:.DelayConnect
+69f55f1bcc23c12169f2d66d309f2356 Assembly-CSharp.dll:.DelayStartRoom
+44f5a0809aa16bfd25483e7fc20cccf1 Assembly-CSharp.dll:.DelayStartLobby

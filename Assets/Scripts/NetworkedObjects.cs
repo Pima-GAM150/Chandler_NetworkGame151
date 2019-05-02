@@ -19,7 +19,7 @@ public class NetworkedObjects : MonoBehaviour
     public float coolDownTime;
     private float nextFiretime;
     public Canvas canvas;
-    
+
 
 
     // keep track of all the players in the game
@@ -34,24 +34,24 @@ public class NetworkedObjects : MonoBehaviour
     // singleton assignment
     void Awake()
     {
-   
-       /* DontDestroyOnLoad(canvas);
-        if (canvasInstance == null)
-        {
-            canvasInstance = this.canvas;
-        }
-        else
-        {
-            Destroy(canvasInstance);
-        }*/
+
+        /* DontDestroyOnLoad(canvas);
+         if (canvasInstance == null)
+         {
+             canvasInstance = this.canvas;
+         }
+         else
+         {
+             Destroy(canvasInstance);
+         }*/
 
         find = this;
-  
+
     }
 
     void Start()
     {
-    
+
 
         if (PhotonNetwork.IsMasterClient)
         {
@@ -64,11 +64,11 @@ public class NetworkedObjects : MonoBehaviour
         float yRange = UnityEngine.Random.Range(-world.bounds.extents.y, world.bounds.extents.y);
 
         Vector3 spawnPos = world.bounds.center + new Vector3(xRange, yRange, 0f);
-       PhotonNetwork.Instantiate("Player", spawnPos, Quaternion.identity, 0);
+        PhotonNetwork.Instantiate("Player", spawnPos, Quaternion.identity, 0);
 
         PhotonNetwork.AutomaticallySyncScene = true;
-       
-      
+
+
 
     }
     void Update()
@@ -76,14 +76,15 @@ public class NetworkedObjects : MonoBehaviour
         netFire();
     }
 
-    public bool netFire() {
-       
-            bool bulletCreated = false;
+    public bool netFire()
+    {
+
+        bool bulletCreated = false;
         Vector2 playerPos = players[0].GetComponent<PlayerMovement>().appearance.position;
         Vector2 mousePos = Input.mousePosition;
         Vector2 screenPos = Camera.main.ScreenToWorldPoint(new Vector2(mousePos.x, mousePos.y));
         Quaternion q = Quaternion.FromToRotation(Vector2.up, screenPos - playerPos);
-        if (Input.GetMouseButtonDown(0) && Input.GetMouseButton(1) )
+        if (Input.GetMouseButtonDown(0) && Input.GetMouseButton(1))
         {
             if (transform.localScale.x < 0 && bulletCreated == false && nextFiretime < Time.time)
             {
@@ -114,23 +115,23 @@ public class NetworkedObjects : MonoBehaviour
         {
             Player.GetComponentInChildren<SpriteRenderer>().enabled = false;
 
-             //playerMove.photonView.RPC("MakeSliderVisible", RpcTarget.All, false);
-            
+            //playerMove.photonView.RPC("MakeSliderVisible", RpcTarget.All, false);
+
 
         }
-       
+
         // only the "server" has authority over which color the player should be and its seed
         if (PhotonNetwork.IsMasterClient)
         {
             player.RPC("SetColor", RpcTarget.AllBuffered, players.Count - 1);
-           
+
         }
     }
 
     public void AddBullet(PhotonView bullet, GameObject bulletGameObj)
     {
         bullets.Add(bullet);
-  
+
     }
     public void ChangeParent()
     {

@@ -10,9 +10,11 @@ using Photon.Pun;
 
 public class JoinGame : MonoBehaviourPunCallbacks // override callback methods that Photon will call at certain connection events
 {
-    const int gameSceneIndex = 1;
+    const int gameSceneIndex = 3;
 
     public TextMeshProUGUI label;
+
+    public NetworkedObjects networkedObjects;
 
     void Start()
     {
@@ -24,14 +26,20 @@ public class JoinGame : MonoBehaviourPunCallbacks // override callback methods t
         PhotonNetwork.AutomaticallySyncScene = true;
 
         // connect using default settings configured in the Photon Settings scriptable object
-        PhotonNetwork.ConnectUsingSettings();
+        
+            PhotonNetwork.ConnectUsingSettings();
+        
     }
 
     public override void OnConnectedToMaster()
     {
-        label.text = "Joining game...";
-        // once connected to the master relay, join a random room
-        PhotonNetwork.JoinRandomRoom();
+
+       
+            label.text = "Joining game...";
+            // once connected to the master relay, join a random room
+            PhotonNetwork.JoinRandomRoom();
+        
+        
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
@@ -53,4 +61,17 @@ public class JoinGame : MonoBehaviourPunCallbacks // override callback methods t
         label.text = "Joined room...";
         SceneManager.LoadScene(gameSceneIndex);
     }
+    public void OnPlayerConnected()
+    {
+        if (PhotonNetwork.PlayerList.Length == 2)
+        {
+            PhotonNetwork.LoadLevel("Game");
+        }
+        else if (PhotonNetwork.PlayerList.Length == 1)
+        {
+            Debug.Log("Not Enough PLayers");
+        
+        }
+    }
+
 }
