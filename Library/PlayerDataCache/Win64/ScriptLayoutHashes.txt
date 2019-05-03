@@ -11,6 +11,11 @@ Assets/Scenes/Arena4.unity
 Assets/Scenes/RedPlayerWin.unity
 Assets/Scenes/YellowPlayerWin.unity
 Assets/Scenes/Tie.unity
+Assets/Scenes/Arena5.unity
+Assets/Scenes/Arena6.unity
+Assets/Scenes/Arena7.unity
+Assets/Scenes/Arena8.unity
+Assets/Scenes/Arena9.unity
 SceneListEnd?
 71bb6a6b6c8f052f948db64c7dd3ca4f PhotonUnityNetworking.Utilities.dll:Photon.Pun.UtilityScripts.PunTeams
 ab039a385ef4459756519a3fe91dccc6 PhotonUnityNetworking.Utilities.dll:Photon.Pun.UtilityScripts.SmoothSyncMovement
@@ -162,6 +167,7 @@ b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 7954c73c8700508fa751e8a786dcffba PhotonUnityNetworking.dll:Photon.Pun.ServerSettings
 dde2fd4c267444a124d5eecf0527369d Assembly-CSharp.dll:.NetworkedObjects
 4fe8955e1c662935371b0936cafbb89b PhotonUnityNetworking.Utilities.dll:Photon.Pun.UtilityScripts.TextButtonTransition
+2f55ebe032435af932916fa022248b01 Assembly-CSharp.dll:.RotatingPlatform
 e6ae40841db498b6e673877ac45ad208 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 1dcb82730d983b77cec736c6ef19f814 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -214,6 +220,5 @@ c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 d9864ada3db659b8d6f66a20aff414b3 PhotonUnityNetworking.dll:Photon.Pun.PhotonView
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 87207d40b89ca632396b05b3cb1e69b0 PhotonUnityNetworking.Utilities.dll:Photon.Pun.UtilityScripts.PlayerNumbering
-c8283c7732e3b6aa70d28f1fed4430ca PhotonUnityNetworking.Utilities.dll:Photon.Pun.UtilityScripts.CountdownTimer
 a54043704f3dbefd91cce38cdc99d62c Assembly-CSharp.dll:.LeftandRightPlatform
-2f55ebe032435af932916fa022248b01 Assembly-CSharp.dll:.RotatingPlatform
+c8283c7732e3b6aa70d28f1fed4430ca PhotonUnityNetworking.Utilities.dll:Photon.Pun.UtilityScripts.CountdownTimer

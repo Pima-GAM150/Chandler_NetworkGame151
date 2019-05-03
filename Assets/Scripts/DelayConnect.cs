@@ -39,7 +39,7 @@ public class DelayConnect : MonoBehaviourPunCallbacks
     private float fullRoomTimer;
     //countdown timer reset variables
     [SerializeField]
-    private float maxWaitTime;
+    private float maxWaitTime = 10;
     [SerializeField]
     private float maxFullRoomWaitTime;
 

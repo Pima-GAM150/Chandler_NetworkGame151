@@ -74,4 +74,9 @@ public class JoinGame : MonoBehaviourPunCallbacks // override callback methods t
         }
     }
 
+    public void quitGame() {
+        PhotonNetwork.Disconnect();
+        Application.Quit();
+    }
+
 }

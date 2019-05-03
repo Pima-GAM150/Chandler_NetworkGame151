@@ -107,7 +107,32 @@ public class PlayerCollision : MonoBehaviourPun, IPunObservable
                     // photonView.RPC("SetScoreText", RpcTarget.All, p1score, p2score);
                     PhotonNetwork.LoadLevel("Arena4");
                 }
-                if (SceneManager.GetSceneByName("Arena4").isLoaded) {
+                else if (SceneManager.GetSceneByName("Arena4").isLoaded)
+                {
+                    // photonView.RPC("SetScoreText", RpcTarget.All, p1score, p2score);
+                    PhotonNetwork.LoadLevel("Arena5");
+                }
+                else if (SceneManager.GetSceneByName("Arena5").isLoaded)
+                {
+                    // photonView.RPC("SetScoreText", RpcTarget.All, p1score, p2score);
+                    PhotonNetwork.LoadLevel("Arena6");
+                }
+                else if (SceneManager.GetSceneByName("Arena6").isLoaded)
+                {
+                    // photonView.RPC("SetScoreText", RpcTarget.All, p1score, p2score);
+                    PhotonNetwork.LoadLevel("Arena7");
+                }
+                else if (SceneManager.GetSceneByName("Arena7").isLoaded)
+                {
+                    // photonView.RPC("SetScoreText", RpcTarget.All, p1score, p2score);
+                    PhotonNetwork.LoadLevel("Arena8");
+                }
+                else if (SceneManager.GetSceneByName("Arena8").isLoaded)
+                {
+                    // photonView.RPC("SetScoreText", RpcTarget.All, p1score, p2score);
+                    PhotonNetwork.LoadLevel("Arena9");
+                }
+                if (SceneManager.GetSceneByName("Arena9").isLoaded) {
                     if (p1score > p2score) {
                         PhotonNetwork.LoadLevel("RedPlayerWin");
                     }

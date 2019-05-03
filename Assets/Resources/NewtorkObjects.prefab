@@ -47,5 +47,11 @@ MonoBehaviour:
   Player: {fileID: 26, guid: 18fa9a5f0756a074c969a4d18c8bb860, type: 3}
   bullet: {fileID: 23, guid: 9003a64eccab73f49b555664571d72a3, type: 3}
   shootPoint: {fileID: 33, guid: 18fa9a5f0756a074c969a4d18c8bb860, type: 3}
+  playerCollision: {fileID: 0}
+  playerMove: {fileID: 0}
+  playerColor: {fileID: 0}
+  coolDownTime: 0.25
+  canvas: {fileID: 0}
   players: []
   bullets: []
+  healthBars: []

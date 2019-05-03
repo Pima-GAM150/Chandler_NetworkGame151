@@ -131,10 +131,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 0.033018887, b: 0.033018887, a: 1}
-    m_HighlightedColor: {r: 0.032395888, g: 0.9811321, b: 0.1919376, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 1, g: 0, b: 0, a: 0.5019608}
+    m_NormalColor: {r: 1, g: 0.033018887, b: 0.033018887, a: 0.5882353}
+    m_HighlightedColor: {r: 0.032395888, g: 0.9811321, b: 0.1919376, a: 0.5882353}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5882353}
+    m_DisabledColor: {r: 1, g: 0, b: 0, a: 0.5882353}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -459,8 +459,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerColors:
-  - {r: 1, g: 0.03272728, b: 0, a: 1}
-  - {r: 1, g: 0.976174, b: 0, a: 1}
+  - {r: 0.8584906, g: 0.117149204, b: 0.09313814, a: 0.39215687}
+  - {r: 0.9433962, g: 0.9225598, b: 0.057849795, a: 0.39215687}
   rend: {fileID: 9041477918773443579}
 --- !u!1 &8265495789899828072
 GameObject:

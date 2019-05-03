@@ -446,7 +446,12 @@ PrefabInstance:
     - target: {fileID: 6643405720366937046, guid: 0d08b676d591fa042a446b914ca1a1b1,
         type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4278190335
+      value: 2516582655
+      objectReference: {fileID: 0}
+    - target: {fileID: 6643405720366937046, guid: 0d08b676d591fa042a446b914ca1a1b1,
+        type: 3}
+      propertyPath: m_fontColor.a
+      value: 0.5882353
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d08b676d591fa042a446b914ca1a1b1, type: 3}
@@ -613,7 +618,12 @@ PrefabInstance:
     - target: {fileID: 2376423771051715218, guid: 56c9be382a106004ab874ac6d1e59477,
         type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4278254079
+      value: 2516646399
+      objectReference: {fileID: 0}
+    - target: {fileID: 2376423771051715218, guid: 56c9be382a106004ab874ac6d1e59477,
+        type: 3}
+      propertyPath: m_fontColor.a
+      value: 0.5882353
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56c9be382a106004ab874ac6d1e59477, type: 3}
@@ -1403,7 +1413,7 @@ PrefabInstance:
     - target: {fileID: 1063087980117284460, guid: b9ff0858e8d55984893c9d82d6b668f3,
         type: 3}
       propertyPath: coolDownTime
-      value: 0
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 1063087980117284460, guid: b9ff0858e8d55984893c9d82d6b668f3,
         type: 3}
